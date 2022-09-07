@@ -1,6 +1,7 @@
 import styles from './Card.module.css';
 
 const Card = props => {
+    console.log(props)
 
     return (
         <div className={`${styles.card} ${props.className}`}>

@@ -1,11 +1,22 @@
+import { useState } from 'react';
 import './App.css';
 import AddUser from './components/Users/AddUser';
-import User from './components/Users/User';
+import UsersList from './components/Users/UsersList';
+
+const defaultUsersList = [
+  {
+    name: 'Oksana',
+    age: '24',
+    id: 1,
+  },
+];
 
 function App() {
+  const [users, setUsers] = useState(defaultUsersList);
   return (
-    <div className="App">
-        <AddUser></AddUser>
+    <div className='App'>
+      <AddUser />=
+      <UsersList users={users} />
     </div>
   );
 }
