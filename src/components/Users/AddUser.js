@@ -17,7 +17,7 @@ const AddUser = (props) => {
       console.log('age validation');
       return;
     }
-    console.log(username, age);
+    props.onAddUser({name: username, age});
     setUsername('');
     setAge('');
   };

@@ -7,16 +7,24 @@ const defaultUsersList = [
   {
     name: 'Oksana',
     age: '24',
-    id: 1,
+    id: '1',
   },
 ];
 
 function App() {
   const [users, setUsers] = useState(defaultUsersList);
+
+  const addUserHandler = user => {
+    setUsers((prev) => {
+      return [...prev, {...user, id: Math.random().toString()}];
+    })
+  };
+
+
   return (
     <div className='App'>
-      <AddUser />=
-      <UsersList users={users} />
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={users}/>
     </div>
   );
 }
