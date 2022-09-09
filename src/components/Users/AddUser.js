@@ -37,7 +37,7 @@ const AddUser = (props) => {
   };
 
   return (
-    <Wrapper>
+    <>
       {errorMessage && (
         <ErrorModal
           title='An Error occured'
@@ -64,7 +64,7 @@ const AddUser = (props) => {
           <Button type='submit'>Add User</Button>
         </form>
       </Card>
-    </Wrapper>
+    </>
   );
 };
 
