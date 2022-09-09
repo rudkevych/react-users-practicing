@@ -28,11 +28,15 @@ const ErrorModal = (props) => {
   return (
     <>
       {ReactDOM.createPortal(
-        <Backdrop onClose={props.onClose}/>,
+        <Backdrop onClose={props.onClose} />,
         document.getElementById('backdrop-root')
       )}
       {ReactDOM.createPortal(
-        <Modal title={props.title} message={props.message} onClose={props.onClose}/>,
+        <Modal
+          title={props.title}
+          message={props.message}
+          onClose={props.onClose}
+        />,
         document.getElementById('modal-root')
       )}
     </>

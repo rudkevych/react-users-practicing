@@ -1,17 +1,20 @@
 import Card from '../UI/Card';
 import styles from './AddUser.module.css';
 import Button from '../UI/Button';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import ErrorModal from '../UI/ErrorModal';
-import Wrapper from '../Helpers/Wrapper';
 
 const AddUser = (props) => {
-  const [username, setUsername] = useState('');
-  const [age, setAge] = useState('');
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
+
   const [errorMessage, setErrorMessage] = useState('');
 
   const addUserHandler = (event) => {
     event.preventDefault();
+
+    const username = nameInputRef.current.value;
+    const age = ageInputRef.current.value;
     if (!username.trim().length || !age.trim().length) {
       setErrorMessage('Username or age field cannot be empty');
       return;
@@ -21,15 +24,8 @@ const AddUser = (props) => {
       return;
     }
     props.onAddUser({ name: username, age });
-    setUsername('');
-    setAge('');
-  };
-
-  const usernameChangeHandler = (event) => {
-    setUsername(event.target.value);
-  };
-  const ageChangeHandler = (event) => {
-    setAge(event.target.value);
+    nameInputRef.current.value = '';
+    ageInputRef.current.value = '';
   };
 
   const modalCloseHandler = () => {
@@ -51,15 +47,13 @@ const AddUser = (props) => {
           <input
             id='username'
             type='text'
-            value={username}
-            onChange={usernameChangeHandler}
+            ref={nameInputRef}
           />
           <label htmlFor='age'>Age</label>
           <input
             id='age'
             type='number'
-            value={age}
-            onChange={ageChangeHandler}
+            ref={ageInputRef}
           />
           <Button type='submit'>Add User</Button>
         </form>
