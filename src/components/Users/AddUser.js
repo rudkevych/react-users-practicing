@@ -3,6 +3,7 @@ import styles from './AddUser.module.css';
 import Button from '../UI/Button';
 import { useState } from 'react';
 import ErrorModal from '../UI/ErrorModal';
+import Wrapper from '../Helpers/Wrapper';
 
 const AddUser = (props) => {
   const [username, setUsername] = useState('');
@@ -33,12 +34,16 @@ const AddUser = (props) => {
 
   const modalCloseHandler = () => {
     setErrorMessage(null);
-  }
+  };
 
   return (
-    <div>
+    <Wrapper>
       {errorMessage && (
-        <ErrorModal title='An Error occured' message={errorMessage} onClose={modalCloseHandler}/>
+        <ErrorModal
+          title='An Error occured'
+          message={errorMessage}
+          onClose={modalCloseHandler}
+        />
       )}
       <Card className={styles.input}>
         <form onSubmit={addUserHandler}>
@@ -59,7 +64,7 @@ const AddUser = (props) => {
           <Button type='submit'>Add User</Button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 
